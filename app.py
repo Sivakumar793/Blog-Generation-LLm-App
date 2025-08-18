@@ -74,7 +74,7 @@ from langchain_community.llms.ctransformers import CTransformers
 # @st.cache_resource
 def load_model():
     return CTransformers(
-        model='Models/llama-2-7b-chat.ggmlv3.q4_0.bin',  # Use a smaller quant
+        model='Models/llama-2-7b-chat.ggmlv3.q8_0.bin',  # Use a smaller quant
         model_type='llama',
         config={'max_new_tokens': 192, 'temperature': 0.01}
     )
