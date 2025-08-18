@@ -1,4 +1,3 @@
-'''
 import streamlit as st
 from langchain.prompts import PromptTemplate
 #from langchain_community.llms import CTransformers
@@ -14,12 +13,13 @@ def getLLamaresponse(input_text,no_words,blog_style):
         model_type='llama',
         config={'max_new_tokens': 256, 'temperature': 0.01})
     ############################################
+    '''
     ### LLama2 model
     llm=CTransformers(model='Models/llama-2-7b-chat.ggmlv3.q8_0.bin',
                       model_type='llama',
                       config={'max_new_tokens':256,
                               'temperature':0.01})
-    
+    '''
     ############################################
     ## Prompt Template
 
@@ -65,28 +65,3 @@ submit=st.button("Generate")
 ## Final response
 if submit:
     st.write(getLLamaresponse(input_text,no_words,blog_style))
-'''
-import streamlit as st
-from langchain.prompts import PromptTemplate
-from langchain_community.llms.ctransformers import CTransformers
-
-# Cache the model so it's not reloaded every time
-# @st.cache_resource
-def load_model():
-    return CTransformers(
-        model='Models/llama-2-7b-chat.ggmlv3.q8_0.bin',  # Use a smaller quant
-        model_type='llama',
-        config={'max_new_tokens': 192, 'temperature': 0.01}
-    )
-
-llm = load_model()
-
-def getLLamaresponse(input_text, no_words, blog_style):
-    template = """
-        Write a blog for {blog_style} job profile for a topic {input_text}
-        within {no_words} words.
-    """
-    prompt = PromptTemplate(input_variables=["blog_style", "input_text", "no_words"], template=template)
-    response = llm.invoke(prompt.format(blog_style=blog_style, input_text=input_text, no_words=no_words))
-    return response
-
