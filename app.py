@@ -71,7 +71,7 @@ from langchain.prompts import PromptTemplate
 from langchain_community.llms.ctransformers import CTransformers
 
 # Cache the model so it's not reloaded every time
-@st.cache_resource
+# @st.cache_resource
 def load_model():
     return CTransformers(
         model='Models/llama-2-7b-chat.ggmlv3.q4_0.bin',  # Use a smaller quant
