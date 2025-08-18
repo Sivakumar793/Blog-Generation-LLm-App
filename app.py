@@ -11,8 +11,7 @@ def getLLamaresponse(input_text,no_words,blog_style):
         model='TheBloke/Llama-2-7B-Chat-GGML',
         model_file='llama-2-7b-chat.ggmlv3.q8_0.bin',
         model_type='llama',
-        config={'max_new_tokens': 256, 'temperature': 0.01}
-    )
+        config={'max_new_tokens': 256, 'temperature': 0.01})
  '''   
     ### LLama2 model
     llm=CTransformers(model='Models/llama-2-7b-chat.ggmlv3.q8_0.bin',
